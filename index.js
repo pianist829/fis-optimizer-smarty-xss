@@ -8,7 +8,7 @@ var DEFAULT_CONF = {
         'no_escape' : 'escape:none'
 	},
 	'leftDelimiter' : '{%',
-	'rightDelimiter' : '%}',
+	'rightDelimiter' : '%}'
 };
 
 module.exports = function(content, file, conf){
@@ -16,4 +16,4 @@ module.exports = function(content, file, conf){
 	var xss = require('smarty-xss');
 	xss.config(conf);
 	return content;
-}`
+};
