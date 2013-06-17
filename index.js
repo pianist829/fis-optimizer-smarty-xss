@@ -1,19 +1,26 @@
-var DEFAULT_CONF = {
-	'escapeMap' : {
-		'js' : 'f_escape_js',
+/*
+ * fis
+ * http://fis.baidu.com/
+ */
+
+'use strict';
+
+var xss = require('smarty-xss');
+
+module.exports = function(content, file, conf){
+	xss.config(conf);
+	return xss.repair(content);
+};
+
+module.exports.defaultOptions = {
+    'escapeMap' : {
+        'js' : 'f_escape_js',
         'html' : 'f_escape_xml',
         'data' : 'f_escape_data',
         'path' : 'f_escape_path',
         'event' : 'f_escape_event',
         'no_escape' : 'escape:none'
-	},
-	'leftDelimiter' : '{%',
-	'rightDelimiter' : '%}'
-};
-
-module.exports = function(content, file, conf){
-	conf = fis.util.merge(DEFAULT_CONF, conf);
-	var xss = require('smarty-xss');
-	xss.config(conf);
-	return content;
+    },
+    'leftDelimiter' : '{%',
+    'rightDelimiter' : '%}'
 };
