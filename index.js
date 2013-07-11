@@ -8,6 +8,11 @@
 var xss = require('smarty-xss');
 
 module.exports = function(content, file, conf){
+    fis.util.map(fis.config.get('setting.smarty'), function(key, value){
+        if(!conf.hasOwnProperty(key)){
+            conf[key] = value;
+        }
+    });
 	xss.config(conf);
 	return xss.repair(content);
 };
@@ -20,7 +25,5 @@ module.exports.defaultOptions = {
         'path' : 'f_escape_path',
         'event' : 'f_escape_event',
         'no_escape' : 'escape:none'
-    },
-    'leftDelimiter' : '{%',
-    'rightDelimiter' : '%}'
+    }
 };
