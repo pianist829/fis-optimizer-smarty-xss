@@ -2,7 +2,7 @@
     "name": "fis-optimizer-smarty-xss",
     "description": "A optimizer for fis to fix smarty xss.",
     "homepage": "http://fis.baidu.com/",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "author": {
         "name": "FIS Team",
         "email": "fis@baidu.com"
