@@ -8,11 +8,9 @@
 var xss = require('smarty-xss');
 
 module.exports = function(content, file, conf){
-    fis.util.map(fis.config.get('setting.smarty'), function(key, value){
-        if(!conf.hasOwnProperty(key)){
-            conf[key] = value;
-        }
-    });
+    conf['leftDelimiter'] = conf['leftDelimiter'] || fis.config.get('settings.smarty.left_delimiter') || '{%';
+    conf['rightDelimiter'] = conf['rightDelimiter'] || fis.config.get('settings.smarty.right_delimiter') || '%}';
+
 	xss.config(conf);
 	return xss.repair(content);
 };
